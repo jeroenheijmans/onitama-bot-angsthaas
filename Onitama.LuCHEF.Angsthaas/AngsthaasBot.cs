@@ -26,12 +26,22 @@ namespace Onitama.LuCHEF.Angsthaas
                 var state = _botProxy.Read<GameState>();
 
                 Console.WriteLine(CondensedUtf8Formatter.Instance.Format(state));
-                
-                // TODO: Determine an actual move.
-                var move = Move.Pass(state.MyHand.First().Type);
+                Move move = DetermineMove(state);
 
                 _botProxy.Write(move);
             }
+        }
+
+        private static Move DetermineMove(GameState state)
+        {
+            // TODO: Determine an actual move.
+            //
+            // 1. See if there's an instant-win move. Even Angsthaas takes that.
+            // 2. Run through all piece/card combinations
+            // 3. Determine summed manhattan distance for each possible move
+            // 4. Choose move with highest summed distance (break ties randomly)
+
+            return Move.Pass(state.MyHand.First().Type);
         }
     }
 }
