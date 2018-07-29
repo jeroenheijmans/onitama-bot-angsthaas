@@ -9,3 +9,5 @@
 **/bin/
 **/.vs/
 tempkey.rsa
+
+**/apikey.txt

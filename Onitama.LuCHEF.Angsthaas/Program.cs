@@ -1,4 +1,5 @@
 ﻿using System;
+using System.IO;
 using System.Reflection;
 using System.Threading;
 using System.Threading.Tasks;
@@ -8,13 +9,13 @@ namespace Onitama.LuCHEF.Angsthaas
 {
     public class Program
     {
-        private const string ApiKey = "TODO";
-
         static void Main(string[] args)
         {
+            var apiKey = File.ReadAllText("apikey.txt").Trim();
+
             using (var cancellationSource = new CancellationTokenSource())
             {
-                var botInterface = RemoteBotClientInitializer.Init(ApiKey, forceLocal: false);
+                var botInterface = RemoteBotClientInitializer.Init(apiKey, forceLocal: false);
                 var testbot = new AngsthaasBot(botInterface);
 
                 try

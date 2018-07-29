@@ -4,6 +4,10 @@ Competition bot for Onitama as per [jorikvdwerf/Onitama.Starterbot.DotnetCore](h
 
 ## Getting started
 
+Make sure to create an `apikey.txt` file in the main project folder root.
+If you don't, the solution won't build.
+If you do, it won't be committed to git because it's in the `.gitignore` file.
+
 Please refer to [the starter bot](https://github.com/jorikvdwerf/Onitama.Starterbot.DotnetCore) for more details about the Onitama competition.
 This repo merely contains a small (not-so-competitive) bot to enter the competition.
 
