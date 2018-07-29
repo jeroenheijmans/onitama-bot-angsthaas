@@ -39,8 +39,6 @@ namespace Onitama.LuCHEF.Angsthaas
 
         private static Move DetermineMove(GameState state)
         {
-            // TODO: See if a winning move. Even Angsthaas takes that.
-
             var myPieces = state.Pieces.Where(p => p.Owner == state.CurrentlyPlaying);
 
             Move bestMove = null;
@@ -65,6 +63,12 @@ namespace Onitama.LuCHEF.Angsthaas
                             to: targetPosition
                         );
 
+                        if (IsWinningMove(state, move))
+                        {
+                            Console.WriteLine("Wow, we found a winning move!?");
+                            return move;
+                        }
+
                         var position = GetPositionAfterMove(state, move);
 
                         var distance = CalculateSummedManhattanDistance(position);
@@ -79,6 +83,29 @@ namespace Onitama.LuCHEF.Angsthaas
             }
 
             return bestMove ?? new PassMove(state.MyHand.First().Type);
+        }
+
+        private static bool IsWinningMove(GameState state, PlayMove move)
+        {
+            var targetPiece = state.Pieces.FirstOrDefault(p => p.PositionOnBoard == move.To);
+
+            if (targetPiece != null 
+                && targetPiece.Owner != state.CurrentlyPlaying 
+                && targetPiece.IsMaster)
+            {
+                return true;
+            }
+
+            var targetBase = state.CurrentlyPlaying == PlayerIdentity.Player1
+                ? Position.Player2Home
+                : Position.Player1Home;
+
+            if (move.To == targetBase)
+            {
+                return true;
+            }
+
+            return false;
         }
 
         private static bool IsValidMove(GameState state, Position targetPosition)

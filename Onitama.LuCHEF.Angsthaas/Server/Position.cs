@@ -30,5 +30,8 @@
                 return ((int)rol5 + X) ^ Y;
             }
         }
+
+        public static Position Player1Home => new Position(0, 2);
+        public static Position Player2Home => new Position(4, 2);
     }
 }
