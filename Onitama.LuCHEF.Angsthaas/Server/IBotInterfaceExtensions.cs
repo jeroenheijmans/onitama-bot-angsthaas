@@ -39,7 +39,7 @@ namespace Onitama.LuCHEF.Angsthaas.Server
 
             var message = new Message
             {
-                Type = move.IsPass ? MessageType.Pass : MessageType.MovePiece,
+                Type = move is PassMove ? MessageType.Pass : MessageType.MovePiece,
                 JsonPayload = JsonConvert.SerializeObject(move),
             };
 
