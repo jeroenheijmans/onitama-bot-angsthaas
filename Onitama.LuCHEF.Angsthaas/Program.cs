@@ -60,12 +60,21 @@ namespace Onitama.LuCHEF.Angsthaas
             // kill the console app without force-quitting it. So it'll
             // have to do.
 
-            var remoteBotClient = botInterface as RemoteBotClient.RemoteBotClient;
-            var field = remoteBotClient.GetType().GetField("_client", BindingFlags.Instance | BindingFlags.NonPublic);
-            var client = field.GetValue(remoteBotClient);
-            var lidclient = client as Lidgren.Network.NetClient;
-            lidclient.Disconnect("Adios!");
-            Task.Delay(500).Wait();
+            try
+            {
+                var remoteBotClient = botInterface as RemoteBotClient.RemoteBotClient;
+                var field = remoteBotClient.GetType().GetField("_client", BindingFlags.Instance | BindingFlags.NonPublic);
+                var client = field.GetValue(remoteBotClient);
+                var lidclient = client as Lidgren.Network.NetClient;
+                lidclient.Disconnect("Adios!");
+                Task.Delay(500).Wait();
+            }
+            catch (Exception)
+            {
+                // Yes, an anti-pattern. But the above dirty hack might die
+                // in weird and unexpected ways, and it shouldn't affect 
+                // running a game ever. So hey, let's fly with this...
+            }
         }
     }
 }
