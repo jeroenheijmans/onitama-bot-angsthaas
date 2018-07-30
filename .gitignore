@@ -10,4 +10,5 @@
 **/.vs/
 tempkey.rsa
 
+/published.zip
 **/apikey.txt
