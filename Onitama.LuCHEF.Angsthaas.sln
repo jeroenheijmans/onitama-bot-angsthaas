@@ -3,13 +3,15 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.27703.2042
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Onitama.LuCHEF.Angsthaas", "Onitama.LuCHEF.Angsthaas\Onitama.LuCHEF.Angsthaas.csproj", "{BA04CB4D-E57F-4C48-A968-DEC21FE20481}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Onitama.LuCHEF.Angsthaas", "Onitama.LuCHEF.Angsthaas\Onitama.LuCHEF.Angsthaas.csproj", "{BA04CB4D-E57F-4C48-A968-DEC21FE20481}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "lib", "lib", "{FBFC5286-5FA9-4A07-B5E9-C026C90C8BE7}"
 	ProjectSection(SolutionItems) = preProject
 		lib\Lidgren.Network.dll = lib\Lidgren.Network.dll
 		lib\RemoteBotClient.dll = lib\RemoteBotClient.dll
 	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Onitama.LuCHEF.Angsthaas.Tests", "Onitama.LuCHEF.Angsthaas.Tests\Onitama.LuCHEF.Angsthaas.Tests.csproj", "{C65C837D-C43D-49FF-9423-C741B5B92FD9}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +23,10 @@ Global
 		{BA04CB4D-E57F-4C48-A968-DEC21FE20481}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{BA04CB4D-E57F-4C48-A968-DEC21FE20481}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{BA04CB4D-E57F-4C48-A968-DEC21FE20481}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C65C837D-C43D-49FF-9423-C741B5B92FD9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C65C837D-C43D-49FF-9423-C741B5B92FD9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C65C837D-C43D-49FF-9423-C741B5B92FD9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C65C837D-C43D-49FF-9423-C741B5B92FD9}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

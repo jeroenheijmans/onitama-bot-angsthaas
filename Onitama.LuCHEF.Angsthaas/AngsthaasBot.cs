@@ -31,7 +31,7 @@ namespace Onitama.LuCHEF.Angsthaas
 
                 Move move = DetermineMove(state);
 
-                _botProxy.Log($"Moving {move.UsedCard}!\n");
+                _botProxy.Log($"Moving {move.UsedCard}! Run away, run away!!\n");
 
                 _botProxy.Write(move);
             }
