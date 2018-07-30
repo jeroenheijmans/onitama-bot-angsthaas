@@ -19,7 +19,7 @@ namespace Onitama.LuCHEF.Angsthaas
         {
             var gameInfo = _botProxy.Read<GameInfo>();
 
-            Console.WriteLine($"Playing as {gameInfo.Identity}");
+            _botProxy.Log($"Playing as {gameInfo.Identity}");
 
             while(true)
             {
@@ -27,17 +27,17 @@ namespace Onitama.LuCHEF.Angsthaas
 
                 var state = _botProxy.Read<GameState>();
 
-                Console.WriteLine(CondensedUtf8Formatter.Instance.Format(state));
+                _botProxy.Log(Environment.NewLine + CondensedUtf8Formatter.Instance.Format(state));
 
                 Move move = DetermineMove(state);
 
-                Console.WriteLine($"Moving {move.UsedCard}!\n");
+                _botProxy.Log($"Moving {move.UsedCard}!\n");
 
                 _botProxy.Write(move);
             }
         }
 
-        private static Move DetermineMove(GameState state)
+        private Move DetermineMove(GameState state)
         {
             var myPieces = state.Pieces.Where(p => p.Owner == state.CurrentlyPlaying);
 
@@ -65,7 +65,7 @@ namespace Onitama.LuCHEF.Angsthaas
 
                         if (IsWinningMove(state, move))
                         {
-                            Console.WriteLine("Wow, we found a winning move!?");
+                            _botProxy.Log("Wow, we found a winning move!?");
                             return move;
                         }
 

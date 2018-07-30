@@ -11,7 +11,9 @@ namespace Onitama.LuCHEF.Angsthaas
     {
         static void Main(string[] args)
         {
-            var apiKey = File.ReadAllText("apikey.txt").Trim();
+            var dir = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
+            var path = Path.Combine(dir, "apikey.txt");
+            var apiKey = File.ReadAllText(path).Trim();
 
             using (var cancellationSource = new CancellationTokenSource())
             {
@@ -25,9 +27,9 @@ namespace Onitama.LuCHEF.Angsthaas
                         cancellationSource.Token
                     );
 
-                    Console.WriteLine("Press 'Q' to quit");
+                    botInterface.Log("Press 'Q' to quit");
 
-                    while (Console.ReadKey().KeyChar != 'q')
+                    while (Console.IsInputRedirected || Console.ReadKey().KeyChar != 'q')
                     {
                         Task.Delay(100, cancellationSource.Token);
                     }
@@ -36,7 +38,7 @@ namespace Onitama.LuCHEF.Angsthaas
                 }
                 catch (OperationCanceledException)
                 {
-                    Console.WriteLine("Operation was cancelled.");
+                    botInterface.Log("Operation was cancelled.");
                 }
                 catch (AggregateException exc)
                 {
@@ -45,12 +47,15 @@ namespace Onitama.LuCHEF.Angsthaas
                         throw;
                     }
 
-                    Console.WriteLine("Operation was cancelled.");
+                    botInterface.Log("Operation was cancelled.");
                 }
 
-                forciblyCloseRemoteBot(botInterface);
-                Console.WriteLine("Exiting. Press any key to quit.");
-                Console.ReadKey();
+                if (!Console.IsInputRedirected)
+                {
+                    forciblyCloseRemoteBot(botInterface);
+                    botInterface.Log("Exiting. Press any key to quit.");
+                    Console.ReadKey();
+                }
             }
         }
 

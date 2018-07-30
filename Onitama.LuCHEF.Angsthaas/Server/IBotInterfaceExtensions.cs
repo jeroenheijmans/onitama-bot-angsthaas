@@ -1,11 +1,20 @@
 ﻿using System;
 using Newtonsoft.Json;
+using Newtonsoft.Json.Converters;
 using RemoteBotClient;
 
 namespace Onitama.LuCHEF.Angsthaas.Server
 {
     public static class IBotInterfaceExtensions
     {
+        static IBotInterfaceExtensions()
+        {
+            JsonConvert.DefaultSettings = () => new JsonSerializerSettings
+            {
+                Converters = new[] { new StringEnumConverter() },
+            };
+        }
+
         public static Message Read(this IBotInterface bot)
         {
             if (bot == null) throw new ArgumentNullException(nameof(bot));
