@@ -1,7 +1,8 @@
 ﻿using System.Linq;
 using System.Text;
+using Onitama.LuCHEF.Angsthaas.Server;
 
-namespace Onitama.LuCHEF.Angsthaas.Server
+namespace Onitama.LuCHEF.Angsthaas
 {
     public class CondensedUtf8Formatter : IGameStateFormatter
     {

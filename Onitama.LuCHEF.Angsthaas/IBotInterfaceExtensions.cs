@@ -1,9 +1,10 @@
 ﻿using System;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
+using Onitama.LuCHEF.Angsthaas.Server;
 using RemoteBotClient;
 
-namespace Onitama.LuCHEF.Angsthaas.Server
+namespace Onitama.LuCHEF.Angsthaas
 {
     public static class IBotInterfaceExtensions
     {

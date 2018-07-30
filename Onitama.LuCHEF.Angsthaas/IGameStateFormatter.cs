@@ -1,4 +1,6 @@
-﻿namespace Onitama.LuCHEF.Angsthaas.Server
+﻿using Onitama.LuCHEF.Angsthaas.Server;
+
+namespace Onitama.LuCHEF.Angsthaas
 {
     public interface IGameStateFormatter
     {
